@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shared", "Core.Shared\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Surveys", "Domain.Surveys\Domain.Surveys.csproj", "{B6C3C369-8129-4AFA-9C32-AE905A0EEBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Storage", "Core.Storage\Core.Storage.csproj", "{8373789A-C2C4-45D9-8C70-430AA45A25D8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.ApplicationServices", "Core.ApplicationServices\Core.ApplicationServices.csproj", "{0FEA0D18-12FA-4413-A311-24FA8CEB3A50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Infrastructure", "Core.Infrastructure\Core.Infrastructure.csproj", "{C8D3ED5D-1D2C-4B2B-8557-179705D58459}"
@@ -49,16 +47,6 @@ Global
 		{B6C3C369-8129-4AFA-9C32-AE905A0EEBA6}.Release|ARM.ActiveCfg = Release|Any CPU
 		{B6C3C369-8129-4AFA-9C32-AE905A0EEBA6}.Release|x64.ActiveCfg = Release|Any CPU
 		{B6C3C369-8129-4AFA-9C32-AE905A0EEBA6}.Release|x86.ActiveCfg = Release|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Release|ARM.ActiveCfg = Release|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Release|x64.ActiveCfg = Release|Any CPU
-		{8373789A-C2C4-45D9-8C70-430AA45A25D8}.Release|x86.ActiveCfg = Release|Any CPU
 		{0FEA0D18-12FA-4413-A311-24FA8CEB3A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FEA0D18-12FA-4413-A311-24FA8CEB3A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FEA0D18-12FA-4413-A311-24FA8CEB3A50}.Debug|ARM.ActiveCfg = Debug|Any CPU
