@@ -8,21 +8,16 @@ using System.Threading.Tasks;
 namespace Domain.Surveys.Events
 {
     [Serializable]
-    public class SurveyTitleChanged : Event
+    public class SurveyActiveFromChanged : Event
     {
 
-        public string Title { get; internal set; }
+        public DateTime ActiveFrom { get; internal set; }
 
-        public SurveyTitleChanged(Guid aggregateId, string title)
+        public SurveyActiveFromChanged(Guid aggregateId, DateTime activeFrom)
         {
             this.AggregateId = aggregateId;
-            this.Title = title;
+            this.ActiveFrom = activeFrom;
         }
 
     }
-
-    
-
-    
-
 }

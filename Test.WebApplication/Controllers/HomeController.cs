@@ -51,7 +51,7 @@ namespace Test.WebApplication.Controllers
         public ActionResult UpdateSurvey(SurveyDetailModel model)
         {
             ServiceLocator.CommandBus.Send(
-                new ChangeSurvey(model.Id, model.Version, model.Title, model.Description, model.IsActive));
+                new ChangeSurvey(model.Id, model.Version, model.Title, model.Description, model.IsActive, model.ActiveFrom, model.ActiveTo));
 
             return RedirectToAction("Index");
         }

@@ -52,14 +52,14 @@ namespace Test.WebApplication.DependencyResolution
 
                 string connectionStringName = "Default";
 
-                cfg.For(typeof(IEventRepository<>)).HybridHttpOrThreadLocalScoped().Use(typeof(EventRepository<>));
-                cfg.For<IEventStorage>().HybridHttpOrThreadLocalScoped().Use<EventStorage>().Ctor<string>("connectionStringOrName").Is(connectionStringName);
-                cfg.For<IEventBus>().HybridHttpOrThreadLocalScoped().Use<EventBus>();
-                cfg.For<ICommandHandlerFactory>().HybridHttpOrThreadLocalScoped().Use<StructureMapCommandHandlerFactory>();
-                cfg.For<IEventHandlerFactory>().HybridHttpOrThreadLocalScoped().Use<StructureMapEventHandlerFactory>();
-                cfg.For<ICommandBus>().HybridHttpOrThreadLocalScoped().Use<CommandBus>();
-                cfg.For<IEventBus>().HybridHttpOrThreadLocalScoped().Use<EventBus>();
-                cfg.For<ISurveyViewModelStore>().HybridHttpOrThreadLocalScoped().Use<SurveyViewModelStore>().Ctor<string>("connectionStringOrName").Is(connectionStringName);
+                cfg.For(typeof(IEventRepository<>)).HttpContextScoped().Use(typeof(EventRepository<>));
+                cfg.For<IEventStorage>().HttpContextScoped().Use<EventStorage>().Ctor<string>("connectionStringOrName").Is(connectionStringName);
+                cfg.For<IEventBus>().HttpContextScoped().Use<EventBus>();
+                cfg.For<ICommandHandlerFactory>().HttpContextScoped().Use<StructureMapCommandHandlerFactory>();
+                cfg.For<IEventHandlerFactory>().HttpContextScoped().Use<StructureMapEventHandlerFactory>();
+                cfg.For<ICommandBus>().HttpContextScoped().Use<CommandBus>();
+                cfg.For<IEventBus>().HttpContextScoped().Use<EventBus>();
+                cfg.For<ISurveyViewModelStore>().HttpContextScoped().Use<SurveyViewModelStore>().Ctor<string>("connectionStringOrName").Is(connectionStringName);
 
             });
 

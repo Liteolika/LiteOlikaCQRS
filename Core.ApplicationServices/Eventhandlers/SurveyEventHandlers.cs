@@ -13,7 +13,9 @@ namespace Core.ApplicationServices.Eventhandlers
         IEventHandler<SurveyCreated>,
         IEventHandler<SurveyTitleChanged>,
         IEventHandler<SurveyDescriptionChanged>,
-        IEventHandler<SurveyIsActiveChanged>
+        IEventHandler<SurveyIsActiveChanged>,
+        IEventHandler<SurveyActiveFromChanged>,
+        IEventHandler<SurveyActiveToChanged>
     {
 
         private readonly ISurveyViewModelStore _repository;
@@ -32,7 +34,9 @@ namespace Core.ApplicationServices.Eventhandlers
                 Title = e.Title,
                 Description = e.Description,
                 Version = e.aggregateVersion,
-                IsActive = e.IsActive
+                IsActive = e.IsActive,
+                ActiveFrom = e.ActiveFrom,
+                ActiveTo = e.ActiveTo
             };
 
 
@@ -60,6 +64,22 @@ namespace Core.ApplicationServices.Eventhandlers
         {
             var dto = _repository.SurveyDetailModels.GetById(e.AggregateId);
             dto.IsActive = e.IsActive;
+            dto.Version = e.aggregateVersion;
+            _repository.Save();
+        }
+
+        public void Handle(SurveyActiveFromChanged e)
+        {
+            var dto = _repository.SurveyDetailModels.GetById(e.AggregateId);
+            dto.ActiveFrom = e.ActiveFrom;
+            dto.Version = e.aggregateVersion;
+            _repository.Save();
+        }
+
+        public void Handle(SurveyActiveToChanged e)
+        {
+            var dto = _repository.SurveyDetailModels.GetById(e.AggregateId);
+            dto.ActiveTo = e.ActiveTo;
             dto.Version = e.aggregateVersion;
             _repository.Save();
         }

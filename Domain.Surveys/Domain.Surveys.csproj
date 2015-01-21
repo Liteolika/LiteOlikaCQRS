@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Commands\ChangeSurvey.cs" />
     <Compile Include="Commands\CreateSurvey.cs" />
+    <Compile Include="Events\SurveyActiveFromChanged.cs" />
+    <Compile Include="Events\SurveyActiveToChanged.cs" />
     <Compile Include="Events\SurveyCreated.cs" />
     <Compile Include="Events\SurveyDescriptionChanged.cs" />
     <Compile Include="Events\SurveyIsActiveChanged.cs" />

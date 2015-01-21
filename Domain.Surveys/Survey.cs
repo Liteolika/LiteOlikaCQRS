@@ -17,21 +17,25 @@ namespace Domain.Surveys
         IHandle<SurveyTitleChanged>,
         IHandle<SurveyDescriptionChanged>,
         IHandle<SurveyIsActiveChanged>,
+        IHandle<SurveyActiveFromChanged>,
+        IHandle<SurveyActiveToChanged>,
         IOriginator
     {
 
         public string Title { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
+        public DateTime ActiveFrom { get; set; }
+        public DateTime ActiveTo { get; set; }
 
         public Survey()
         {
-
+            
         }
 
-        public Survey(Guid id, string title, string description, bool isActive)
+        public Survey(Guid id, string title, string description, bool isActive, DateTime activeFrom, DateTime activeTo)
         {
-            ApplyChange(new SurveyCreated(id, title, description, isActive));
+            ApplyChange(new SurveyCreated(id, title, description, isActive, activeFrom, activeTo));
         }
 
 
@@ -59,6 +63,17 @@ namespace Domain.Surveys
             IsActive = e.IsActive;
         }
 
+        public void Handle(SurveyActiveFromChanged e)
+        {
+            ActiveFrom = e.ActiveFrom;
+        }
+
+        public void Handle(SurveyActiveToChanged e)
+        {
+            ActiveTo = e.ActiveTo;
+        }
+
+
         public void ChangeTitle(string title)
         {
             ApplyChange(new SurveyTitleChanged(AggregateId, title));
@@ -72,6 +87,16 @@ namespace Domain.Surveys
         public void ChangeIsActive(bool isActive)
         {
             ApplyChange(new SurveyIsActiveChanged(AggregateId, isActive));
+        }
+
+        public void ChangeActiveFrom(DateTime activeFrom)
+        {
+            ApplyChange(new SurveyActiveFromChanged(AggregateId, activeFrom));
+        }
+
+        public void ChangeActiveTo(DateTime activeTo)
+        {
+            ApplyChange(new SurveyActiveToChanged(AggregateId, activeTo));
         }
 
 
@@ -94,6 +119,8 @@ namespace Domain.Surveys
 
 
 
-        
+
+
+
     }
 }

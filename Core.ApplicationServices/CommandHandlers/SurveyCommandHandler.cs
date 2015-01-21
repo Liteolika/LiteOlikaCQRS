@@ -31,7 +31,9 @@ namespace Core.ApplicationServices.CommandHandlers
                 command.AggregateId, 
                 command.Title, 
                 command.Description, 
-                command.IsActive);
+                command.IsActive,
+                DateTime.Now,
+                DateTime.Now.AddYears(1));
             aggregate.AggregateVersion = -1;
             _repository.Save(aggregate, aggregate.AggregateVersion);
         }
@@ -50,6 +52,12 @@ namespace Core.ApplicationServices.CommandHandlers
 
             if (aggregate.IsActive != command.IsActive)
                 aggregate.ChangeIsActive(command.IsActive);
+
+            if (aggregate.ActiveFrom != command.ActiveFrom)
+                aggregate.ChangeActiveFrom(command.ActiveFrom);
+
+            if (aggregate.ActiveTo != command.ActiveTo)
+                aggregate.ChangeActiveTo(command.ActiveTo);
 
             _repository.Save(aggregate, command.AggregateVersion);
         }
