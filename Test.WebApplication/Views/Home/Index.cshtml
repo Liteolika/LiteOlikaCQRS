@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Domain.Surveys.ViewModels.SurveyDetailModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.ActionLink("New Survey", "AddSurvey")
+<hr />
+
+@foreach (var item in Model)
+{
+    <p>
+        @Html.ActionLink(item.Title, "EditSurvey", new { surveyId = item.Id })
+    </p>
+}
