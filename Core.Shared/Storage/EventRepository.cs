@@ -1,8 +1,8 @@
 ﻿using Core.Shared.Domain;
-using Core.Shared.Domain.Mementos;
+using Core.Shared.Domain.Snapshots;
 using Core.Shared.Events;
 using Core.Shared.Exceptions;
-using Core.Shared.Storage.Memento;
+using Core.Shared.Storage.Snapshots;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,18 +43,18 @@ namespace Core.Shared.Storage
         public T GetById(Guid id)
         {
             IEnumerable<Event> events;
-            var memento = _storage.GetMemento<BaseMemento>(id);
-            if (memento != null)
+            var snapshot = _storage.GetSnapshot<SnapshotBase>(id);
+            if (snapshot != null)
             {
-                events = _storage.GetEvents(id).Where(e => e.aggregateVersion >= memento.Version);
+                events = _storage.GetEvents(id).Where(e => e.aggregateVersion >= snapshot.Version);
             }
             else
             {
                 events = _storage.GetEvents(id);
             }
             var obj = new T();
-            if (memento != null)
-                ((IOriginator)obj).SetMemento(memento);
+            if (snapshot != null)
+                ((IOriginator)obj).SetSnapshot(snapshot);
 
             obj.LoadsFromHistory(events);
             return obj;

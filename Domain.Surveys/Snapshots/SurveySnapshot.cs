@@ -1,14 +1,14 @@
-﻿using Core.Shared.Domain.Mementos;
+﻿using Core.Shared.Domain.Snapshots;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Surveys.Mementos
+namespace Domain.Surveys.Snapshots
 {
     [Serializable]
-    public class SurveyMemento : BaseMemento
+    public class SurveySnapshot : SnapshotBase
     {
 
         public string Title { get; internal set; }
@@ -17,7 +17,7 @@ namespace Domain.Surveys.Mementos
 
         public int EventVersion { get; set; }
 
-        public SurveyMemento(Guid id, int version, string title,string description, bool isActive)
+        public SurveySnapshot(Guid id, int version, string title,string description, bool isActive)
         {
             this.Id = id;
             this.Version = version;

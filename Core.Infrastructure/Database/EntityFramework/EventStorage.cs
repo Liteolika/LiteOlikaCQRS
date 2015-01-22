@@ -1,10 +1,10 @@
 ﻿using Core.Shared.Domain;
-using Core.Shared.Domain.Mementos;
+using Core.Shared.Domain.Snapshots;
 using Core.Shared.Events;
 using Core.Shared.Exceptions;
 using Core.Shared.Messaging;
 using Core.Shared.Storage;
-using Core.Shared.Storage.Memento;
+using Core.Shared.Storage.Snapshots;
 using Core.Shared.Utils;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Core.Infrastructure.Database.EntityFramework
         private readonly IEventBus _eventBus;
 
         public DbSet<EventData> Events { get; set; }
-        public DbSet<MementoData> Mementos { get; set; }
+        public DbSet<SnapshotData> Snapshots { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -70,9 +70,9 @@ namespace Core.Infrastructure.Database.EntityFramework
                     if (version % 3 == 0)
                     {
                         var originator = (IOriginator)aggregate;
-                        var memento = originator.GetMemento();
-                        memento.Version = version;
-                        SaveMemento(memento);
+                        var snapshot = originator.GetSnapshot();
+                        snapshot.Version = version;
+                        SaveSnapshot(snapshot);
                     }
                 }
                 @event.aggregateVersion = version;
@@ -89,25 +89,23 @@ namespace Core.Infrastructure.Database.EntityFramework
             }
         }
 
-
-
-        public T GetMemento<T>(Guid aggregateId) where T : BaseMemento
+        public T GetSnapshot<T>(Guid aggregateId) where T : SnapshotBase
         {
 
-            var me = Mementos.Where(x => x.AggregateId == aggregateId).ToList();
+            var me = Snapshots.Where(x => x.AggregateId == aggregateId).OrderBy(x=>x.Version).ToList();
             if (me != null)
             {
                 var last = me.Select(x => x).LastOrDefault();
                 if (last != null)
-                    return Serializers.MementoDeserializer<T>(last);
+                    return Serializers.SnapshotDeserializer<T>(last);
             }
             return null;
         }
 
-        public void SaveMemento(BaseMemento memento)
+        public void SaveSnapshot(SnapshotBase snapshot)
         {
-            var mementoData = Serializers.MementoSerializer(memento);
-            Mementos.Add(mementoData);
+            var snapshotData = Serializers.SnapshotSerializer(snapshot);
+            Snapshots.Add(snapshotData);
             SaveChanges();
         }
 

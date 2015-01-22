@@ -8,5 +8,12 @@ namespace Core.Infrastructure.Database.EntityFramework
 {
     public class MigrationContext : DbContextBase
     {
+
+        public MigrationContext(string connectionStringOrName)
+            : base(connectionStringOrName)
+        {
+
+        }
+
     }
 }

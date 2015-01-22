@@ -1,5 +1,5 @@
 ﻿using Core.Shared.Domain;
-using Core.Shared.Domain.Mementos;
+using Core.Shared.Domain.Snapshots;
 using Core.Shared.Events;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Core.Shared.Storage
     {
         IEnumerable<Event> GetEvents(Guid aggregateId);
         void Save(AggregateRoot aggregate);
-        T GetMemento<T>(Guid aggregateId) where T : BaseMemento;
-        void SaveMemento(BaseMemento memento);
+        T GetSnapshot<T>(Guid aggregateId) where T : SnapshotBase;
+        void SaveSnapshot(SnapshotBase snapshot);
     }
 }

@@ -17,18 +17,10 @@ namespace Core.ApplicationServices.Eventhandlers
         public StructureMapEventHandlerFactory(IContainer container)
         {
             this.container = container;
-
-            var a = container.WhatDoIHave();
-
-            var b = 1;
-
         }
 
         public IEnumerable<IEventHandler<T>> GetHandlers<T>() where T : Event
         {
-            //var handlers = GetHandlerType<T>();
-            //var lstHandlers = handlers.Select(handler => (IEventHandler<T>)container.GetInstance(handler)).ToList();
-
             List<IEventHandler<T>> handlers = new List<IEventHandler<T>>();
 
             var evtHandlers = container
@@ -46,7 +38,6 @@ namespace Core.ApplicationServices.Eventhandlers
             var handlers = typeof(IEventHandler<>).Assembly.GetExportedTypes()
                 .Where(x => x.GetInterfaces()
                     .Any(a => a.IsGenericType && a.GetGenericTypeDefinition() == typeof(IEventHandler<>))).Where(h => h.GetInterfaces().Any(ii => ii.GetGenericArguments().Any(aa => aa == typeof(T)))).ToList();
-
 
             return handlers;
         }

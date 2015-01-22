@@ -46,7 +46,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\IEventProvider.cs" />
-    <Compile Include="Domain\Mementos\BaseMemento.cs" />
+    <Compile Include="Domain\Snapshots\SnapshotBase.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\IEventHandlerFactory.cs" />
     <Compile Include="Events\Event.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Messaging\ICommandBus.cs" />
     <Compile Include="Messaging\IEventBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\Memento\MementoData.cs" />
+    <Compile Include="Storage\Snapshots\SnapshotData.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\IViewModelRepository.cs" />
     <Compile Include="ViewModels\IViewModelStore.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Storage\IEventStorage.cs" />
     <Compile Include="Storage\IEventRepository.cs" />
     <Compile Include="Storage\EventRepository.cs" />
-    <Compile Include="Storage\Memento\IOriginator.cs" />
+    <Compile Include="Storage\Snapshots\IOriginator.cs" />
     <Compile Include="Utils\EventConverters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

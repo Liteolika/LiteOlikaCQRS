@@ -1,9 +1,9 @@
 ﻿using Core.Shared.Domain;
-using Core.Shared.Domain.Mementos;
+using Core.Shared.Domain.Snapshots;
 using Core.Shared.Events;
-using Core.Shared.Storage.Memento;
+using Core.Shared.Storage.Snapshots;
 using Domain.Surveys.Events;
-using Domain.Surveys.Mementos;
+using Domain.Surveys.Snapshots;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,19 +101,24 @@ namespace Domain.Surveys
 
 
 
-        public BaseMemento GetMemento()
+        public SnapshotBase GetSnapshot()
         {
-            return new SurveyMemento(AggregateId, AggregateVersion, Title, Description, IsActive);
+            return new SurveySnapshot(
+                AggregateId, 
+                AggregateVersion, 
+                Title, 
+                Description, 
+                IsActive);
         }
 
-        public void SetMemento(BaseMemento memento)
+        public void SetSnapshot(SnapshotBase snapshot)
         {
-            this.AggregateId = memento.Id;
-            this.AggregateVersion = memento.Version;
+            this.AggregateId = snapshot.Id;
+            this.AggregateVersion = snapshot.Version;
 
-            Title = ((SurveyMemento)memento).Title;
-            Description = ((SurveyMemento)memento).Description;
-            IsActive = ((SurveyMemento)memento).IsActive;
+            Title = ((SurveySnapshot)snapshot).Title;
+            Description = ((SurveySnapshot)snapshot).Description;
+            IsActive = ((SurveySnapshot)snapshot).IsActive;
             
         }
 

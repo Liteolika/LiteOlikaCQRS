@@ -1,6 +1,6 @@
-﻿using Core.Shared.Domain.Mementos;
+﻿using Core.Shared.Domain.Snapshots;
 using Core.Shared.Events;
-using Core.Shared.Storage.Memento;
+using Core.Shared.Storage.Snapshots;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,28 +37,28 @@ namespace Core.Infrastructure.Database.EntityFramework
             }
         }
 
-        public static MementoData MementoSerializer(BaseMemento memento)
+        public static SnapshotData SnapshotSerializer(SnapshotBase snapshot)
         {
             BinaryFormatter bf = new BinaryFormatter();
             using (MemoryStream ms = new MemoryStream())
             {
-                bf.Serialize(ms, memento);
-                MementoData e = new MementoData(memento.Id, 
-                    memento.Version, 
+                bf.Serialize(ms, snapshot);
+                SnapshotData e = new SnapshotData(snapshot.Id, 
+                    snapshot.Version, 
                     ms.ToArray());
                 return e;
             }
         }
 
-        public static T MementoDeserializer<T>(MementoData mementoData)
+        public static T SnapshotDeserializer<T>(SnapshotData snapshotData)
         {
             BinaryFormatter bf = new BinaryFormatter();
             using (MemoryStream ms = new MemoryStream())
             {
-                ms.Write(mementoData.Data, 0, mementoData.Data.Length);
+                ms.Write(snapshotData.Data, 0, snapshotData.Data.Length);
                 ms.Seek(0, SeekOrigin.Begin);
-                T memento = (T)bf.Deserialize(ms);
-                return memento;
+                T snapshot = (T)bf.Deserialize(ms);
+                return snapshot;
             }
         }
 

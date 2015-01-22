@@ -1,15 +1,15 @@
-﻿using Core.Shared.Domain.Mementos;
+﻿using Core.Shared.Domain.Snapshots;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Shared.Storage.Memento
+namespace Core.Shared.Storage.Snapshots
 {
     public interface IOriginator
     {
-        BaseMemento GetMemento();
-        void SetMemento(BaseMemento memento);
+        SnapshotBase GetSnapshot();
+        void SetSnapshot(SnapshotBase snapshot);
     }
 }

@@ -48,7 +48,7 @@
     <Compile Include="Events\SurveyDescriptionChanged.cs" />
     <Compile Include="Events\SurveyIsActiveChanged.cs" />
     <Compile Include="Events\SurveyTitleChanged.cs" />
-    <Compile Include="Mementos\SurveyMemento.cs" />
+    <Compile Include="Snapshots\SurveySnapshot.cs" />
     <Compile Include="Survey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ISurveyViewModelStore.cs" />

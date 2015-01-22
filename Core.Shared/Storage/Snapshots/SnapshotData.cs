@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Shared.Storage.Memento
+namespace Core.Shared.Storage.Snapshots
 {
-    public class MementoData
+    public class SnapshotData
     {
 
-        protected MementoData()
+        protected SnapshotData()
         { }
 
-        public MementoData(Guid aggregateId, int version, byte[] eventData)
+        public SnapshotData(Guid aggregateId, int version, byte[] eventData)
         {
             this.MementoId = Guid.NewGuid();
             this.AggregateId = aggregateId;
@@ -22,9 +22,9 @@ namespace Core.Shared.Storage.Memento
         }
 
         [Key]
-        public Guid MementoId { get; private set; }
+        public Guid MementoId { get; set; }
         public Guid AggregateId { get; set; }
-        public int Version;
+        public int Version { get; set; }
 
         public byte[] Data { get; set; }
 
