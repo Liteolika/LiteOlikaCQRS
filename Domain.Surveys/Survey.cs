@@ -38,7 +38,6 @@ namespace Domain.Surveys
             ApplyChange(new SurveyCreated(id, title, description, isActive, activeFrom, activeTo));
         }
 
-
         public void Handle(SurveyCreated e)
         {
             this.AggregateId = e.AggregateId;
@@ -73,7 +72,6 @@ namespace Domain.Surveys
             ActiveTo = e.ActiveTo;
         }
 
-
         public void ChangeTitle(string title)
         {
             ApplyChange(new SurveyTitleChanged(AggregateId, title));
@@ -98,8 +96,6 @@ namespace Domain.Surveys
         {
             ApplyChange(new SurveyActiveToChanged(AggregateId, activeTo));
         }
-
-
 
         public SnapshotBase GetSnapshot()
         {
