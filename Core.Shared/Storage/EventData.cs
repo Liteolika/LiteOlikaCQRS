@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Shared.Events
+namespace Core.Shared.Storage
 {
     public class EventData
     {

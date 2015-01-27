@@ -35,7 +35,6 @@ namespace Core.Shared.Domain
         {
             foreach (var e in history) ApplyChange(e, false);
             AggregateVersion = history.Last().aggregateVersion;
-            //EventVersion = AggregateVersion;
         }
 
         protected void ApplyChange(Event @event)
