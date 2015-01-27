@@ -78,8 +78,7 @@ namespace Core.ApplicationServices
                 cfg.Scan(scan =>
                 {
                     scan.TheCallingAssembly();
-                    //scan.AddAllTypesOf(typeof(ICommandHandler<>));
-                    //scan.AddAllTypesOf(typeof(IEventHandler<>));
+                    scan.AssembliesFromApplicationBaseDirectory();
                     scan.ConnectImplementationsToTypesClosing(typeof(ICommandHandler<>));
                     scan.ConnectImplementationsToTypesClosing(typeof(IEventHandler<>));
                     scan.WithDefaultConventions();

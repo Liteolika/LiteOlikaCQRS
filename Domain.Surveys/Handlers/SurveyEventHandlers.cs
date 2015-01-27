@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.ApplicationServices.Eventhandlers
+namespace Domain.Surveys.Handlers
 {
     public class SurveyEventHandlers :
         IEventHandler<SurveyCreated>,

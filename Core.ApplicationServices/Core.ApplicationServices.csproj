@@ -56,9 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\StructureMapCommandHandlerFactory.cs" />
-    <Compile Include="CommandHandlers\SurveyCommandHandler.cs" />
     <Compile Include="Eventhandlers\StructureMapEventHandlerFactory.cs" />
-    <Compile Include="Eventhandlers\SurveyEventHandlers.cs" />
     <Compile Include="Messaging\CommandBus.cs" />
     <Compile Include="Messaging\EventBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

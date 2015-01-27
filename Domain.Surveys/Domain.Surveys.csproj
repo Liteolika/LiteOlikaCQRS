@@ -48,6 +48,8 @@
     <Compile Include="Events\SurveyDescriptionChanged.cs" />
     <Compile Include="Events\SurveyIsActiveChanged.cs" />
     <Compile Include="Events\SurveyTitleChanged.cs" />
+    <Compile Include="Handlers\SurveyCommandHandler.cs" />
+    <Compile Include="Handlers\SurveyEventHandlers.cs" />
     <Compile Include="Snapshots\SurveySnapshot.cs" />
     <Compile Include="Survey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

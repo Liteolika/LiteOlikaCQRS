@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.ApplicationServices.CommandHandlers
+namespace Domain.Surveys.Handlers
 {
     public class SurveyCommandHandler : 
         ICommandHandler<CreateSurvey>,
